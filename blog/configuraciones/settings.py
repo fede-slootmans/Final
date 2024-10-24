@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dg*))(x$uaih3y(18x47awrju++c$z*$gzu$aye+3!xawo*ezp'
 
 # Modo de depuración activado. En producción debe estar en False para evitar la exposición de información sensible.
-DEBUG = True
+DEBUG = False
 
 # Lista de hosts permitidos para acceder al sitio. En producción se deben agregar los dominios permitidos.
 ALLOWED_HOSTS = []
