@@ -19,6 +19,18 @@
         <li class="list-inline-item"><a class="btn btn-secondary" href="{% url 'apps.posts:posts' %}?orden=alfabetico">Orden alfabético</a></li>
     </ul>
 
+    <!-- Filtro de categorías -->
+    <h3>Filtrar por categoría:</h3>
+    <form method="get" action="{% url 'apps.posts:posts' %}">
+        <select name="categoria" class="form-select mb-3">
+            <option value="">Todas las categorías</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}" {% if categoria.id == request.GET.categoria %}selected{% endif %}>{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
     <!-- Listado de posts -->
     {% for i in posts %}
         <div class="post my-5 p-3 border rounded">
@@ -41,7 +53,7 @@
             <p class="text-muted text-right"><small>Creado por {{ i.creador }}</small></p>
 
             <!-- Categoría -->
-            <h3>{{ i.categoria }}</h3>
+            <h3>{{ i.categoria.nombre }}</h3>
 
             <!-- Texto del post (resumen o intro) -->
             <p>{{ i.texto|truncatewords:50 }}</p>

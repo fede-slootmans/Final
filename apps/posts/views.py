@@ -35,6 +35,11 @@ class PostListView(ListView):
     def get_queryset(self):
         # Método para obtener la lista de posts, con la opción de ordenarlos por fecha o alfabéticamente
         queryset = super().get_queryset()
+        
+        categoria_id = self.request.GET.get('categoria')  # Obtén la categoría de los parámetros GET
+        if categoria_id:
+            queryset = queryset.filter(categoria__id=categoria_id)
+            
         orden = self.request.GET.get('orden')
         if orden == 'reciente':
             queryset = queryset.order_by('-fecha')
@@ -48,6 +53,8 @@ class PostListView(ListView):
         # Provee datos adicionales al contexto (como el orden elegido por el usuario)
         context = super().get_context_data(**kwargs)
         context['orden'] = self.request.GET.get('orden', 'reciente')
+        context['categorias'] = Categoria.objects.all()
+        context['categoria_seleccionada'] = self.request.GET.get('categoria', None)
         return context
 
 # CLASE PostDetailView: Detalle de un post específico
