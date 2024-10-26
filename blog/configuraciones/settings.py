@@ -123,6 +123,7 @@ USE_TZ = True  # Habilita el uso de zonas horarias
 # Configuración de archivos estáticos (como CSS, JavaScript, etc.).
 STATIC_URL = '/static/'  # URL para acceder a archivos estáticos
 STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR), 'static'),)  # Directorios donde se buscan archivos estáticos
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Configuración del campo de clave primaria por defecto en los modelos.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

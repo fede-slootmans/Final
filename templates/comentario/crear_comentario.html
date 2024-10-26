@@ -47,7 +47,7 @@
                     <div class="alert alert-warning" role="alert">
                         Debes iniciar sesión o registrarte para comentar.
                     </div>
-                    <a href="{% url 'apps.usuario:login' %}?next={{ request.path }}" class="btn btn-success btn-lg">Iniciar sesión</a>
+                    <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-success btn-lg">Iniciar sesión</a>
                     <input type="hidden" name="next" value="{{ request.path }}">
                 {% endif %}
             </div>
